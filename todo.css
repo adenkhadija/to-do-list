@@ -1,0 +1,61 @@
+.container{
+    width:100%; 
+    min-height:100vh; 
+    background:radial-gradient(#e66465, #9198e5);
+    padding:10px; 
+}
+.todo-app{
+    width:100%; 
+    max-width:550px; 
+    background:#fff;
+    margin: 100px auto 20px; 
+    padding:40px 30px 70px; 
+    border-radius: 10px; 
+}
+
+.todo-app h2 { 
+    color:#002765; 
+    display: flex; 
+    align-items: center; 
+    margin-bottom: 20px;
+}
+.task-bar{
+    display: flex;
+    align-items: center;
+    justify-content:space-between;
+}
+input{
+    flex:1; 
+    border: none;
+    outline:none; 
+    padding:10px;
+}
+
+#add{
+    background: #e66465; 
+    border: none; 
+    outline:none;
+    padding: 15px 50px; 
+    border-radius: 10px; 
+     
+}
+.cancel{
+    position:absolute; 
+    left: 180px; 
+    width:35px; 
+    text-align:center; 
+    padding:0px; 
+    cursor:pointer; 
+      
+}
+
+li {
+    margin:20px; 
+    position: relative; 
+ 
+}
+
+
+
+
+
