@@ -40,6 +40,7 @@ input{
      
 }
 .cancel{
+    color:red; 
     position:absolute; 
     left: 420px; 
     width:35px; 

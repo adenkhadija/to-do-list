@@ -31,130 +31,85 @@
         <script>
 
             let addItem = document.getElementById('add'); //NodeObject button
-            let Collection = document.getElementsByTagName("input"); // htmlCollecton  
+            //let Collection = document.getElementsByTagName("input"); // htmlCollecton  
             
-            let UlList = document.getElementsByTagName('ul'); 
-            let UlNodeObject = UlList[0]
-            
-            //let completed = false; 
-            let inputNode = Collection[0]; 
-            console.log('input Node', inputNode); 
-
-
-            
-            const addTask = () => { 
-                let userInput = inputNode.value; //string 
-                inputNode.value = '';  // reset the input to empty string
-                let txt = document.createTextNode(userInput); // NodeObject
+            //let UlList = document.getElementsByTagName('ul'); 
+            let UlNodeObject = document.querySelector('ul'); 
         
-                let list = document.createElement('li');
-            // create a element 
-            // text Node inside the list -- appending 
-                list.appendChild(txt)
-                UlNodeObject.appendChild(list)
+            //let UlNodeObject = UlList[0]; 
+            
+            let inputNode = document.querySelector('input'); // nodeObject Element
 
-                let xbutton = document.createElement('span'); 
-                xbutton.innerHTML = '\u00d7'; 
-                list.appendChild(xbutton); 
-                xbutton.classList.add('cancel'); 
+            
+            //let userInput = inputNode.value; //string 
+            //console.log('user input', userInput); 
 
-            // list.style.color = 'red'; 
-                list.style.listStyleType = 'none'; 
-                inputNode.value = ''
 
-                let completed = false; 
-                list.addEventListener('click', () => {
-                completed = !completed; 
-                //console.log('completed status', completed)
-                if (completed){ // true
-                    list.style.textDecoration = 'line-through';
-                    //console.log('text decoration'); 
+            let arrayInput = []; 
+            //let xbutton = document.createElement('span'); 
+
+
+            //let userInput = inputNode.value; //string
+
+            const addTask = () => {
+                let userInput = inputNode.value; //string
+                arrayInput.push(userInput); 
+                //console.log('array', arrayInput); 
+                inputNode.value = ''; 
+                render(); 
+            }
+            
+            const render = () => {
+                UlNodeObject.innerHTML = ""; 
+
+                arrayInput.forEach((item, index, arrayInput) => {
+                    console.log()
+
+                    let list = document.createElement('li');
+
+                    let textNodeObject = document.createTextNode(item); 
+                    list.appendChild(textNodeObject); 
+                    //console.log('textNodeObject',textNodeObject); 
+
+                    UlNodeObject.appendChild(list);
+                    
+                    let xbutton = document.createElement('span'); 
+                    xbutton.textContent = '\u00d7';
+                    list.appendChild(xbutton); 
+                    xbutton.classList.add('cancel');
+                    
+                    xbutton.addEventListener('click', (event) => {
+                        event.stopPropagation(); 
+                        arrayInput.splice(index,1); 
+                        render(); 
+                        // list.remove()
+                        // // not updating the arrayDOM  
+                        // console.log('array', arrayInput); 
+                      
+    
                 }
-                else {
-                    list.style.textDecoration = 'none'; 
-                }
-            })
 
-            xbutton.addEventListener('click', (event) => {
-                event.stopPropagation();
-                list.remove();
+            ); 
+
+
+                 }); 
+
+
+                }; 
+
+
+            addItem.addEventListener('click', () => {
+                if (inputNode.value.trim() === '') return; 
+                addTask();
             });
             
-
-
-            }; 
-            
-
-
-            addItem.addEventListener("click", () =>{
-                if (inputNode.value === '') {
-                    return 
-                }
-                else{
-                    addTask()
-                }
-            } )
-
-              inputNode.addEventListener('keydown', (event) =>{
-                if (inputNode.value === ''){
-                    return 
-                }
+            inputNode.addEventListener('keydown', (event) =>{
+                if (inputNode.value.trim() === '') return;
                 else if (event.key === 'Enter') {
                     addTask()
                 }
 
-               } )      
-                
-
-            
-    
-            // what the user entered 
-            // let userInput = inputNode.value; //string 
-            // inputNode.value = '';  // reset the input to empty string
-
-
-            // let txt = document.createTextNode(userInput); // NodeObject
-            // let list = document.createElement('li');
-
-
-
-            // // create a element 
-           
-            // // text Node inside the list -- appending 
-            // list.appendChild(txt)
-
-            // UlNodeObject.appendChild(list)
-
-            // let xbutton = document.createElement('span'); 
-            // xbutton.innerHTML = '\u00d7'; 
-            // list.appendChild(xbutton); 
-            // xbutton.classList.add('cancel'); 
-
-            // list.style.color = 'red'; 
-            //list.style.listStyleType = 'none'; 
-
-            // list.addEventListener('click', () => {
-            //     completed = !completed; 
-            //     if (completed){ // true
-            //         list.style.textDecoration = 'line-through';
-            //         //console.log('text decoration'); 
-            //     }
-            //     else {
-            //         list.style.textDecoration = 'none'; 
-            //     }
-            // })
-
-            // click on the x --> remove from the list 
-
-            // xbutton.addEventListener('click', () => {
-            //     // add event listener is a method of the nodeObject
-            //     list.remove()
-
-            // })
-           
-
-            
-    
+               });       
 
         </script>
     </body>
