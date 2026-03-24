@@ -13,6 +13,8 @@ Tech Stack:
 - HTML – Structure
 - CSS – Styling & layout
 - Functionality & DOM manipulation
+
+
 ----
 Upcoming Features: 
 - Save tasks using localStorage (persist after refresh)
