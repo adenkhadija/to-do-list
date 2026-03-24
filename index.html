@@ -2,7 +2,7 @@
 <html>
     <head>
     
-    <link rel="stylesheet" href="todo.css">
+    <link rel="stylesheet" href="style.css">
 
     </head>
 
@@ -81,15 +81,11 @@
                     xbutton.addEventListener('click', (event) => {
                         event.stopPropagation(); 
                         arrayInput.splice(index,1); 
-                        render(); 
-                        // list.remove()
-                        // // not updating the arrayDOM  
-                        // console.log('array', arrayInput); 
-                      
+                        render();       
     
-                }
-
-            ); 
+                }); 
+                list.addEventListener('click', () => list.classList.toggle('complete'));
+                //list.style.listStyleType = "none";  
 
 
                  }); 
@@ -109,7 +105,9 @@
                     addTask()
                 }
 
-               });       
+               });    
+               
+            
 
         </script>
     </body>

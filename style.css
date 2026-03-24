@@ -55,7 +55,33 @@ li {
     position: relative; 
  
 }
+ul li{
+    list-style:none; 
+    position:relative; 
+    padding-left:40px; 
+    text-align:justify  
 
+}
+
+ul li::before{
+    content:""; 
+    position:absolute; 
+    width:24px; 
+    height: 24px; 
+    top:10%; 
+    left:0px; 
+    background-image: url(unchecked.png); 
+    background-size:cover; 
+    background-position:center; 
+
+}
+.complete{
+    color:#555; 
+}
+
+ul li.complete::before{
+    background-image: url(checked.png)
+}
 
 
 
